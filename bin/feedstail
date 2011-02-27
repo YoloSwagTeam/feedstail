@@ -1,0 +1,60 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# Copyright (C) 2011 Romain Gauthier <romain.gauthier@masteri2l.org>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+# Import from the standard library
+from argparse import ArgumentParser
+from signal import signal, SIGINT
+
+# Import from feedstail
+from feedstail import __version__, main
+from feedstail.config import config
+
+
+def stop(signum, frame):
+    exit(0)
+
+
+signal(SIGINT, stop)
+
+
+if __name__ == '__main__':
+    parser = ArgumentParser('feedstail')
+    version = '%(prog)s' + ' v%s, (C) 2011 by romain.gauthier@masteri2l.org' % __version__
+    # Standards rsstail parameters
+    parser.add_argument('-u', '--url', help='URL of feed to tail')
+    parser.add_argument('-i', '--interval', type=int, help='check interval in seconds (default is 15min)')
+    parser.add_argument('-1', '--oneshot', action='store_true', help='one shot')
+    parser.add_argument('-V', '--version', action='version', version=version, help='show version and exit')
+    # Non standards rsstail parameters
+    parser.add_argument('-f', '--format', help='define your output format')
+
+    options = parser.parse_args()
+
+    if options.interval:
+        config.interval = options.interval
+    if options.oneshot:
+        config.oneshot = True
+    if options.format:
+        config.format = unicode(options.format, 'utf-8')
+
+    if options.url:
+        config.url = options.url
+        main()
+    else:
+        parser.print_help()
+        exit(0)
+
