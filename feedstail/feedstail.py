@@ -37,8 +37,10 @@ def show(entry):
 def loop():
     def cycle():
         global tail
-        d = parse(config.url)
-        for entry in d.entries:
+        d = parse(config.url).entries
+        if config.reverse:
+            d.reverse()
+        for entry in d:
             if isnew(entry):
                 tail = [entry] + tail[:100]
                 show(entry)
