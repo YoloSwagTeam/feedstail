@@ -1,6 +1,10 @@
 # Setup file for feedstail
 from setuptools import setup
 
+# Import from feedstail
+from feedstail import __version__
+
+
 with open('README.rst') as readme:
     long_description = readme.read()
 
@@ -13,7 +17,7 @@ setup( name             = "feedstail"
      , author           = "Romain Gauthier"
      , author_email     = "romain.gauthier@masteri2l.org"
 
-     , version          = "0.0.1"
+     , version          = __version__
      , scripts          = ['bin/feedstail']
      , packages         = ['feedstail']
      , data_files       = [('', ['README.rst', 'LICENSE.txt'])]
