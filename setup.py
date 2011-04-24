@@ -22,7 +22,7 @@ setup( name             = "feedstail"
 
      , classifiers      =
          [ "Development Status :: 3 - Alpha"
-         , "License :: OSI Approved :: GNU General Public License v3"
+         , "License :: OSI Approved :: GNU General Public License (GPL)"
          , "Operating System :: OS Independent"
          , "Programming Language :: Python :: 2.6"
          , "Topic :: Utilities"
