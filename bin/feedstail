@@ -43,6 +43,7 @@ if __name__ == '__main__':
     parser.add_argument('-f', '--format', help='define your output format')
     parser.add_argument('-r', '--reverse', action='store_true', help='reverse the displaying order of the elements')
     parser.add_argument('-k', '--key', help='use KEY to find new entries')
+    parser.add_argument('-r', '--reverse', action='store_true', help='reverse the displaying order of the elements')
 
     options = parser.parse_args()
 
@@ -56,6 +57,8 @@ if __name__ == '__main__':
         config.reverse = True
     if options.key:
         config.key = options.key
+    if options.reverse:
+        config.reverse = True
 
     if options.url:
         config.url = options.url

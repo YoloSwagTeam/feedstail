@@ -28,5 +28,6 @@ class Config(Storage):
         self.format = u'Title: {title}'
         self.reverse = False
         self.key = 'id'
+        self.reverse = False
 
 config = Config()
