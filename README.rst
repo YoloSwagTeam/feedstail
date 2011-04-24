@@ -66,6 +66,8 @@ choose another element of comparison with the ``k`` option.
 The following example says to feedstail to use the title to find new
 entries:
 
+::
+
   $ feedstail -u http://identi.ca/api/statuses/public_timeline.atom -i 2 -k title
 
 
