@@ -27,5 +27,6 @@ class Config(Storage):
         self.oneshot = False
         self.format = u'Title: {title}'
         self.reverse = False
+        self.key = 'id'
 
 config = Config()

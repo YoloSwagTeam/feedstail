@@ -25,7 +25,7 @@ tail = []
 
 def isnew(entry):
     for item in tail:
-        if entry.id == item.id:
+        if entry[config.key] == item[config.key]:
             return False
     return True
 
@@ -34,8 +34,8 @@ def show(entry):
     print(config.format.format(**entry))
 
 
-def main():
-    def _main():
+def loop():
+    def cycle():
         global tail
         d = parse(config.url).entries
         if config.reverse:
@@ -45,8 +45,8 @@ def main():
                 tail = [entry] + tail[:100]
                 show(entry)
 
-    _main()
+    cycle()
     while not config.oneshot:
         sleep(config.interval)
-        _main()
+        cycle()
 
