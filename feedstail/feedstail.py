@@ -15,6 +15,8 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 # Import from the standard library
+import sys
+
 from time import sleep
 
 # Import from FeedParser
@@ -31,7 +33,9 @@ def isnew(entry):
 
 
 def show(entry):
-    print(config.format.format(**entry))
+    sys.stdout.write(config.format.format(**entry))
+    sys.stdout.write("\n")
+    sys.stdout.flush()
 
 
 def loop():
