@@ -26,8 +26,8 @@ class Config(Storage):
         self.interval = 60 * 15 # 15 min
         self.oneshot = False
         self.format = u'Title: {title}'
-        self.reverse = False
         self.key = 'id'
         self.reverse = False
+
 
 config = Config()
