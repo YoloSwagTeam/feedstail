@@ -55,11 +55,11 @@ The following example will retrieve feeds every 5 seconds:
 The default output format may not be ok for you. You can specify your
 own format using the ``f`` option. The given fields must be an
 available property of the feed entries.
-The following example will output the published date, the title and the url:
+The following example will output the published date, the title and the link:
 
 ::
 
-  $ feedstail -u http://identi.ca/api/statuses/public_timeline.atom -f "{published}: {title} - {url}"
+  $ feedstail -u http://identi.ca/api/statuses/public_timeline.atom -f "{published}: {title} - {link}"
 
 Feedstail compares the ``id`` element to find new entries. You can
 choose another element of comparison with the ``k`` option.
