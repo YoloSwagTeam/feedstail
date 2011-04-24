@@ -33,7 +33,8 @@ def isnew(entry):
 
 
 def show(entry):
-    sys.stdout.write(config.format.format(**entry))
+    output = config.format.format(**entry)
+    sys.stdout.write(output.encode('utf-8'))
     sys.stdout.write("\n")
     sys.stdout.flush()
 
