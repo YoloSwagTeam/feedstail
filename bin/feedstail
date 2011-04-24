@@ -20,7 +20,7 @@ from argparse import ArgumentParser
 from signal import signal, SIGINT
 
 # Import from feedstail
-from feedstail import __version__, main
+from feedstail import __version__, loop
 from feedstail.config import config
 
 
@@ -53,7 +53,7 @@ if __name__ == '__main__':
 
     if options.url:
         config.url = options.url
-        main()
+        loop()
     else:
         parser.print_help()
         exit(0)

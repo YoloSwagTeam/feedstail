@@ -34,8 +34,8 @@ def show(entry):
     print(config.format.format(**entry))
 
 
-def main():
-    def _main():
+def loop():
+    def cycle():
         global tail
         d = parse(config.url)
         for entry in d.entries:
@@ -43,8 +43,8 @@ def main():
                 tail = [entry] + tail[:100]
                 show(entry)
 
-    _main()
+    cycle()
     while not config.oneshot:
         sleep(config.interval)
-        _main()
+        cycle()
 

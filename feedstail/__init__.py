@@ -14,8 +14,8 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from feedstail import main
+from feedstail import loop
 
 __version__ = '0.1.0'
-__all__ = ['__version__', 'main']
+__all__ = ['__version__', 'loop']
 
