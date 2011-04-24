@@ -1,9 +1,8 @@
 # Setup file for feedstail
 from setuptools import setup
 
-long_description = """\
-Feedstail monitor a feed and emits new entries. It aim to be simple,
-hackable and compatible with rsstail, its C brother."""
+with open('README.rst') as readme:
+    long_description = readme.read()
 
 setup( name             = "feedstail"
      , description      = "A tail-f-like utility for feeds"
