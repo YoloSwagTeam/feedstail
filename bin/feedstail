@@ -41,6 +41,7 @@ if __name__ == '__main__':
     parser.add_argument('-V', '--version', action='version', version=version, help='show version and exit')
     # Non standards rsstail parameters
     parser.add_argument('-f', '--format', help='define your output format')
+    parser.add_argument('-k', '--key', help='use KEY to find new entries')
 
     options = parser.parse_args()
 
@@ -50,6 +51,8 @@ if __name__ == '__main__':
         config.oneshot = True
     if options.format:
         config.format = unicode(options.format, 'utf-8')
+    if options.key:
+        config.key = options.key
 
     if options.url:
         config.url = options.url

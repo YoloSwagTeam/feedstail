@@ -25,7 +25,7 @@ tail = []
 
 def isnew(entry):
     for item in tail:
-        if entry.id == item.id:
+        if entry[config.key] == item[config.key]:
             return False
     return True
 
