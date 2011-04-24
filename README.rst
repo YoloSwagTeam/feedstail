@@ -69,6 +69,13 @@ entries:
   $ feedstail -u http://identi.ca/api/statuses/public_timeline.atom -i 2 -k title
 
 
+As feedstail is built above `feedparser`_, the available values of
+format fields and keys can be found in `the documentation of the library`_.
+
+.. _`feedparser` : http://feedparser.org/docs/
+.. _`the documentation of the library` : http://feedparser.org/docs/
+
+
 Contribute !
 ------------
 
