@@ -30,12 +30,13 @@ def isnew(entry):
             return False
     return True
 
+if version_info < (2, 6):
+    format = lambda entry: config.format % entry
+else:
+    format = lambda entry: config.format.format(**entry)
 
 def show(entry):
-    if version_info < (2, 6):
-        output = config.format % entry
-    else:
-        output = config.format.format(**entry)
+    output = format(entry)
     stdout.write(output.encode('utf-8'))
     stdout.write("\n")
     stdout.flush()
