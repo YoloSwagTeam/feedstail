@@ -14,6 +14,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+
 # The following class is part of the web.py project. So it is in the Public
 # Domain. For more informations, please see the following URLs :
 #

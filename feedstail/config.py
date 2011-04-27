@@ -14,6 +14,9 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+# Import from the standard library
+from sys import version_info
+
 # Import from feedstail
 from utils import Storage
 
@@ -25,9 +28,13 @@ class Config(Storage):
         # default values
         self.interval = 60 * 15 # 15 min
         self.oneshot = False
-        self.format = u'Title: {title}'
         self.key = 'id'
         self.reverse = False
+
+        if version_info < (2, 6):
+            self.format = u'Title: %(title)s'
+        else:
+            self.format = u'Title: {title}'
 
 
 config = Config()

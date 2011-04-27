@@ -15,8 +15,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 # Import from the standard library
-import sys
-
+from sys import version_info, stdout
 from time import sleep
 
 # Import from FeedParser
@@ -33,10 +32,13 @@ def isnew(entry):
 
 
 def show(entry):
-    output = config.format.format(**entry)
-    sys.stdout.write(output.encode('utf-8'))
-    sys.stdout.write("\n")
-    sys.stdout.flush()
+    if version_info < (2, 6):
+        output = config.format % entry
+    else:
+        output = config.format.format(**entry)
+    stdout.write(output.encode('utf-8'))
+    stdout.write("\n")
+    stdout.flush()
 
 
 def loop():

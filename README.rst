@@ -52,6 +52,7 @@ The following example will retrieve feeds every 5 seconds:
 
   $ feedstail -u http://identi.ca/api/statuses/public_timeline.atom -i 5
 
+
 The default output format may not be ok for you. You can specify your
 own format using the ``f`` option. The given fields must be an
 available property of the feed entries.
@@ -61,6 +62,16 @@ The following example will output the published date, the title and the link:
 
   $ feedstail -u http://identi.ca/api/statuses/public_timeline.atom -f "{published}: {title} - {link}"
 
+This last example use the string formatting syntax appeared in the 2.6
+version of Python.
+However, feedstail aim to be 2.5 compatible so you can use the old
+string formatting syntax:
+
+::
+
+  $ feedstail -u http://identi.ca/api/statuses/public_timeline.atom -f "%(published)s: %(title)s - %(link)s"
+
+
 Feedstail compares the ``id`` element to find new entries. You can
 choose another element of comparison with the ``k`` option.
 The following example says to feedstail to use the title to find new
@@ -69,6 +80,7 @@ entries:
 ::
 
   $ feedstail -u http://identi.ca/api/statuses/public_timeline.atom -i 2 -k title
+
 
 
 As feedstail is built above `feedparser`_, the available values of

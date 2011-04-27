@@ -5,12 +5,9 @@ from setuptools import setup
 from feedstail import __version__
 
 
-with open('README.rst') as readme:
-    long_description = readme.read()
-
 setup( name             = "feedstail"
      , description      = "A tail-f-like utility for feeds"
-     , long_description = long_description
+     , long_description = open('README.rst').read()
      , license          = "GNU General Public License v3"
      , url              = "https://gitorious.org/feedstail/feedstail"
 
