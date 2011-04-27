@@ -24,7 +24,7 @@ setup( name             = "feedstail"
          [ "Development Status :: 3 - Alpha"
          , "License :: OSI Approved :: GNU General Public License (GPL)"
          , "Operating System :: OS Independent"
-         , "Programming Language :: Python :: 2.6"
+         , "Programming Language :: Python :: 2.5"
          , "Topic :: Utilities"
          ]
       )
