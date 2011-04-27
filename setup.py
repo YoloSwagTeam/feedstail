@@ -1,9 +1,6 @@
 # Setup file for feedstail
 from setuptools import setup
 
-# Import from feedstail
-from feedstail import __version__
-
 
 setup( name             = "feedstail"
      , description      = "A tail-f-like utility for feeds"
@@ -14,7 +11,7 @@ setup( name             = "feedstail"
      , author           = "Romain Gauthier"
      , author_email     = "romain.gauthier@masteri2l.org"
 
-     , version          = __version__
+     , version          = '0.1.2'
      , scripts          = ['bin/feedstail']
      , packages         = ['feedstail']
      , data_files       = [('', ['README.rst', 'LICENSE.txt'])]
