@@ -31,6 +31,7 @@ class Config(Storage):
         self.oneshot = False
         self.key = 'id'
         self.reverse = False
+        self.number = None
 
         if version_info < (2, 6):
             self.format = u'Title: %(title)s'

@@ -44,9 +44,13 @@ def show(entry):
 
 
 def loop():
-    def cycle():
+    def cycle(number=None):
         global tail
         entries = parse(config.url).entries
+
+        if number is not None and number < len(entries):
+            entries = entries[:number]
+
         if config.reverse:
             entries.reverse()
         for entry in entries:
@@ -54,7 +58,7 @@ def loop():
                 tail = [entry] + tail[:100]
                 show(entry)
 
-    cycle()
+    cycle(config.number)
     while not config.oneshot:
         sleep(config.interval)
         cycle()
