@@ -16,6 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 # Import from the standard library
+from logging import basicConfig
 from sys import version_info
 
 # Import from feedstail
@@ -40,3 +41,5 @@ class Config(Storage):
 
 
 config = Config()
+basicConfig(format='%(levelname)s: %(message)s')
+

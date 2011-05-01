@@ -14,9 +14,12 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from feedstail import loop
+from feedstail import loop, FeedKeyError
 
 
 __version__ = '0.2.0'
-__all__ = ['__version__', 'loop']
+__all__ = [ 'FeedKeyError'
+          , '__version__'
+          , 'loop'
+          ]
 

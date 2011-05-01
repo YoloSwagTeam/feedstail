@@ -18,10 +18,11 @@
 
 # Import from the standard library
 from argparse import ArgumentParser
+from logging import error
 from signal import signal, SIGINT
 
 # Import from feedstail
-from feedstail import __version__, loop
+from feedstail import __version__, loop, FeedKeyError
 from feedstail.config import config
 
 
@@ -63,7 +64,11 @@ if __name__ == '__main__':
 
     if options.url:
         config.url = options.url
-        loop()
+        try:
+            loop()
+        except FeedKeyError, key:
+            error('The %s property is not available for this feed.' % key)
+            exit(1)
     else:
         parser.print_help()
         exit(0)

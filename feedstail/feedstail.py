@@ -23,24 +23,34 @@ from time import sleep
 from config import config
 from feedparser import parse
 
+
 tail = []
 
 def isnew(entry):
+    if config.key not in entry:
+        raise FeedKeyError(config.key)
+
     for item in tail:
         if entry[config.key] == item[config.key]:
             return False
     return True
+
 
 if version_info < (2, 6):
     format = lambda entry: config.format % entry
 else:
     format = lambda entry: config.format.format(**entry)
 
+
 def show(entry):
-    output = format(entry)
-    stdout.write(output.encode('utf-8'))
-    stdout.write("\n")
-    stdout.flush()
+    try:
+        output = format(entry)
+    except KeyError, key:
+        raise FeedKeyError(key.args[0])
+    else:
+        stdout.write(output.encode('utf-8'))
+        stdout.write("\n")
+        stdout.flush()
 
 
 def loop():
@@ -62,4 +72,14 @@ def loop():
     while not config.oneshot:
         sleep(config.interval)
         cycle()
+
+
+class FeedKeyError(KeyError):
+
+    def __init__(self, key):
+        self.key = key
+
+
+    def __str__(self):
+        return str(self.key)
 
