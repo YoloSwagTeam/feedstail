@@ -26,6 +26,12 @@ from feedparser import parse
 
 tail = []
 
+if version_info < (2, 6):
+    format = lambda entry: config.format % entry
+else:
+    format = lambda entry: config.format.format(**entry)
+
+
 def isnew(entry):
     if config.key not in entry:
         raise FeedKeyError(config.key)
@@ -34,12 +40,6 @@ def isnew(entry):
         if entry[config.key] == item[config.key]:
             return False
     return True
-
-
-if version_info < (2, 6):
-    format = lambda entry: config.format % entry
-else:
-    format = lambda entry: config.format.format(**entry)
 
 
 def show(entry):
