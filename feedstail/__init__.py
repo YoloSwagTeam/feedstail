@@ -17,7 +17,7 @@
 from feedstail import loop, FeedKeyError
 
 
-__version__ = '0.2.0'
+__version__ = '0.3.0'
 __all__ = [ 'FeedKeyError'
           , '__version__'
           , 'loop'
