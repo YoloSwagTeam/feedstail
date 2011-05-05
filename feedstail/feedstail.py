@@ -58,10 +58,10 @@ def loop():
         global tail
         entries = parse(config.url).entries
 
-        if number is not None and number < len(entries):
-            entries = entries[:number]
+        if number is not None and number <= len(entries):
             for entry in entries[number:]:
                 tail = [entry] + tail[:100]
+            entries = entries[:number]
 
         if config.reverse:
             entries.reverse()
