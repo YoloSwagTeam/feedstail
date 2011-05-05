@@ -60,6 +60,8 @@ def loop():
 
         if number is not None and number < len(entries):
             entries = entries[:number]
+            for entry in entries[number:]:
+                tail = [entry] + tail[:100]
 
         if config.reverse:
             entries.reverse()
