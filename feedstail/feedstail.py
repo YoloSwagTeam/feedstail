@@ -56,7 +56,10 @@ def show(entry):
 def loop():
     def cycle(number=None):
         global tail
-        entries = parse(config.url).entries
+        try:
+            entries = parse(config.url).entries
+        except MemoryError:
+            continue
 
         if config.reverse:
             entries.reverse()
