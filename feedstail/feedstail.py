@@ -59,7 +59,7 @@ def loop():
         try:
             entries = parse(config.url).entries
         except MemoryError:
-            continue
+            return
 
         if config.reverse:
             entries.reverse()
