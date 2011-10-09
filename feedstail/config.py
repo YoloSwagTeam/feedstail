@@ -33,6 +33,7 @@ class Config(Storage):
         self.key = 'id'
         self.reverse = False
         self.number = None
+        self.ignore_key_error = False
 
         if version_info < (2, 6):
             self.format = u'Title: %(title)s'

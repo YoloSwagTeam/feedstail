@@ -34,6 +34,8 @@ else:
 
 def isnew(entry):
     if config.key not in entry:
+        if config.ignore_key_error:
+            return False
         raise FeedKeyError(config.key)
 
     for item in tail:
