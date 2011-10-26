@@ -47,6 +47,7 @@ def isnew(entry):
 def show(entry):
     try:
         output = format(entry)
+        output = re.sub(r"[\t\r\n\s]+", r" ", output)
     except KeyError, key:
         raise FeedKeyError(key.args[0])
     else:
