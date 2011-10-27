@@ -34,6 +34,7 @@ class Config(Storage):
         self.reverse = False
         self.number = None
         self.ignore_key_error = False
+        self.no_endl = False
 
         if version_info < (2, 6):
             self.format = u'Title: %(title)s'

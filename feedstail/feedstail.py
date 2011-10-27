@@ -16,6 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 # Import from the standard library
+import re
 from sys import version_info, stdout
 from time import sleep
 
@@ -47,7 +48,8 @@ def isnew(entry):
 def show(entry):
     try:
         output = format(entry)
-        output = re.sub(r"[\t\r\n\s]+", r" ", output)
+        if config.no_endl:
+            output = re.sub(r"[\t\r\n\s]+", r" ", output)
     except KeyError, key:
         raise FeedKeyError(key.args[0])
     else:

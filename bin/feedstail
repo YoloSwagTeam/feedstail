@@ -47,6 +47,7 @@ if __name__ == '__main__':
     parser.add_argument('-r', '--reverse', action='store_true', help='reverse the displaying order of the elements')
     parser.add_argument('-n', '--number', type=int, help='number of items to show initialy')
     parser.add_argument('-K', '--ignore-key-error', action='store_true', help='don\'t stop if a key error is encountered')
+    parser.add_argument('-e', '--no-endl', action='store_true', help='remove carriage return')
 
     options = parser.parse_args()
 
@@ -64,6 +65,8 @@ if __name__ == '__main__':
         config.number = options.number
     if options.ignore_key_error:
         config.ignore_key_error = True
+    if options.no_endl:
+        config.no_endl = True
 
     if options.url:
         config.url = options.url
