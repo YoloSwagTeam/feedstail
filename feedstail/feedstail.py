@@ -62,7 +62,7 @@ def loop():
     def cycle(number=None):
         global tail
         try:
-            entries = parse(config.url).entries
+            entries = parse(config.url, agent="FeedsTail/0.* +https://gitorious.org/feedstail").entries
         except MemoryError:
             return
 
