@@ -90,6 +90,40 @@ format fields and keys can be found in `the documentation of the library`_.
 .. _`the documentation of the library` : http://feedparser.org/docs/
 
 
+Importing to other python project
+---------------------------------
+
+Feedstail could be imported to another python project with:
+::
+
+   from feedstail import feedGenerator
+   from feedstail.config import Config
+
+Options :
+   * key : The comparaison key. By default: ``id``
+   * reverse : Boolean value for reversing the entries of the feed. By default: False
+   * number : At the first time, show x entries. By default, it is None and shows all the received entries.
+   * ignore_key_error : Boolean value for ignore keys errors. By default: False
+   * no_endl : Boolean value for ignoring end lines. By default: False
+   * url : The url. By default: None
+   * format : The format of entries.
+
+Options not present :
+   * interval : The interval time for checking the feed.
+   * one shot : Get once the feed.
+
+The feedGenerator take an instance of Config as parameters and return a generator. This generator will return
+an array of entries (could be an empty array) with the defined format.
+
+Example:
+::
+
+   from feedstail import feedGenerator
+   from feedstail.config import Config
+
+   feed = feedGenerator(Config(url="http://identi.ca/api/statuses/public_timeline.atom", format=u'{title} - {link}'))
+   print '\n'.join(feed.next())
+
 Contribute !
 ------------
 
