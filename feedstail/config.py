@@ -28,20 +28,19 @@ class Config(Storage):
     def __init__(self, *args, **kwargs):
         Storage(self, *args, **kwargs)
         # default values
-        self.interval = 60 * 15 # 15 min
-        self.oneshot = False
-        self.key = 'id'
-        self.reverse = False
-        self.number = None
-        self.ignore_key_error = False
-        self.no_endl = False
+        self.key = kwargs.get('key', 'id')
+        self.reverse = kwargs.get('reverse', False)
+        self.number = kwargs.get('number', None)
+        self.ignore_key_error = kwargs.get('ignore_key_error', False)
+        self.no_endl = kwargs.get('no_endl', False)
+	self.url = kwargs.get('url', None)
 
         if version_info < (2, 6):
-            self.format = u'Title: %(title)s'
+            self.format = kwargs.get('format', u'Title: %(title)s')
+            self.formatFct = format = lambda entry: self.format % entry
         else:
-            self.format = u'Title: {title}'
+            self.format = kwargs.get('format', u'Title: {title}') 
+            self.formatFct = lambda entry: self.format.format(**entry)
 
-
-config = Config()
 basicConfig(format='%(levelname)s: %(message)s')
 

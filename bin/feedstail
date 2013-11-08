@@ -20,10 +20,12 @@
 from argparse import ArgumentParser
 from logging import error
 from signal import signal, SIGINT
+from sys import stdout
 
 # Import from feedstail
-from feedstail import __version__, loop, FeedKeyError
-from feedstail.config import config
+from feedstail import __version__, feedGenerator, FeedKeyError
+from feedstail.config import Config
+from time import sleep
 
 
 def stop(signum, frame):
@@ -32,8 +34,14 @@ def stop(signum, frame):
 
 signal(SIGINT, stop)
 
+def writeEntries(entries):
+    for entry in entries:
+        stdout.write(entry)
+        stdout.write("\n")
+        stdout.flush()
 
 if __name__ == '__main__':
+    config = Config()
     parser = ArgumentParser('feedstail')
     version = '%(prog)s' + ' v%s, (C) 2011 by romain.gauthier@masteri2l.org' % __version__
     # Standards rsstail parameters
@@ -53,8 +61,12 @@ if __name__ == '__main__':
 
     if options.interval:
         config.interval = options.interval
+    else:
+        config.interval = 60*15 #15 mins
     if options.oneshot:
         config.oneshot = True
+    else:
+        config.oneshot = False
     if options.format:
         config.format = unicode(options.format, 'utf-8')
     if options.key:
@@ -71,7 +83,14 @@ if __name__ == '__main__':
     if options.url:
         config.url = options.url
         try:
-            loop()
+            gen = feedGenerator(config)
+            writeEntries(gen.next())
+            while not config.oneshot:
+                 sleep(config.interval)
+                 writeEntries(gen.next())            
+
+
+
         except FeedKeyError, key:
             error('The %s property is not available for this feed.' % key)
             exit(1)

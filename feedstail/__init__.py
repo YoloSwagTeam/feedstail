@@ -14,12 +14,12 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from feedstail import loop, FeedKeyError
+from feedstail import feedGenerator, FeedKeyError
 
 
 __version__ = '0.4.0'
 __all__ = [ 'FeedKeyError'
           , '__version__'
-          , 'loop'
+          , 'feedGenerator'
           ]
 

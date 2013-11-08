@@ -17,23 +17,12 @@
 
 # Import from the standard library
 import re
-from sys import version_info, stdout
-from time import sleep
 
 # Import from FeedParser
-from config import config
 from feedparser import parse
+from config import Config
 
-
-tail = []
-
-if version_info < (2, 6):
-    format = lambda entry: config.format % entry
-else:
-    format = lambda entry: config.format.format(**entry)
-
-
-def isnew(entry):
+def isnew(tail, config, entry):
     if config.key not in entry:
         if config.ignore_key_error:
             return False
@@ -45,22 +34,19 @@ def isnew(entry):
     return True
 
 
-def show(entry):
+def show(config, entry):
     try:
-        output = format(entry)
+        output = config.formatFct(entry)
         if config.no_endl:
             output = re.sub(r"[\t\r\n\s]+", r" ", output)
     except KeyError, key:
         raise FeedKeyError(key.args[0])
     else:
-        stdout.write(output.encode('utf-8'))
-        stdout.write("\n")
-        stdout.flush()
+        return output.encode('utf-8')
 
-
-def loop():
-    def cycle(number=None):
-        global tail
+def feedGenerator(config):
+    def cycle(tail, number=None):
+        result = []
         try:
             entries = parse(config.url, agent="FeedsTail/0.* +https://gitorious.org/feedstail").entries
         except MemoryError:
@@ -75,14 +61,17 @@ def loop():
             entries = entries[:number]
 
         for entry in entries:
-            if isnew(entry):
+            if isnew(tail, config, entry):
                 tail = [entry] + tail[:100]
-                show(entry)
+                result.append( show(config, entry) )
+        return (tail, result)
 
-    cycle(config.number)
-    while not config.oneshot:
-        sleep(config.interval)
-        cycle()
+    tail = []
+    (tail, result) = cycle(tail, config.number)
+    yield result
+    while True:
+        (tail, result) = cycle(tail)
+        yield result
 
 
 class FeedKeyError(KeyError):
