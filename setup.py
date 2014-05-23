@@ -6,7 +6,7 @@ setup( name             = "feedstail"
      , description      = "A tail-f-like utility for feeds"
      , long_description = open('README.rst').read()
      , license          = "GNU General Public License v3"
-     , url              = "https://gitorious.org/feedstail/feedstail"
+     , url              = "https://github.com/Psycojoker/feedstail"
 
      , author           = "Romain Gauthier"
      , author_email     = "romain.gauthier@masteri2l.org"
