@@ -83,8 +83,8 @@ entries:
 As feedstail is built above `feedparser`_, the available values of
 format fields and keys can be found in `the documentation of the library`_.
 
-.. _`feedparser` : http://feedparser.org/docs/
-.. _`the documentation of the library` : http://feedparser.org/docs/
+.. _`feedparser` : https://pythonhosted.org/feedparser/
+.. _`the documentation of the library` : https://pythonhosted.org/feedparser/
 
 
 Importing to other python project
