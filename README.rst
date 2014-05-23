@@ -28,7 +28,7 @@ Or retrieve the project with git and install it:
 
 ::
 
-  $ git clone git://gitorious.org/feedstail/feedstail.git
+  $ git clone https://github.com/Psycojoker/feedstail.git
   $ cd feedstail
   $ python setup.py install
 
@@ -127,7 +127,7 @@ Example:
 Contribute !
 ------------
 
-  - Fork the project: `git://gitorious.org/feedstail/feedstail.git`_
+  - Fork the project: `https://github.com/Psycojoker/feedstail.git`_
   - Create your patch in a topic branch
   - Send pull requests or send your patches via e-mail
 
@@ -138,5 +138,5 @@ Don't forget to mark your commits by one of the following flag:
   - [doc]: Your commit improve the documentation
   - [mod]: Your commit bring general changes, matching neither of the above, like refactoring
 
-.. _`git://gitorious.org/feedstail/feedstail.git` : git://gitorious.org/feedstail/feedstail.git
+.. _`https://github.com/Psycojoker/feedstail.git` : https://github.com/Psycojoker/feedstail.git
 
