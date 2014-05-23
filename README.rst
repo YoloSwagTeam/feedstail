@@ -32,14 +32,11 @@ Or retrieve the project with git and install it:
   $ cd feedstail
   $ python setup.py install
 
-Then, launch feedstail with the `identi.ca`_ feeds to test it:
+Then, launch feedstail with a random feeds to test it:
 
 ::
 
-  $ feedstail -u http://identi.ca/api/statuses/public_timeline.atom
-
-.. _identi.ca : http://identi.ca/
-
+  $ feedstail -u http://hackeragenda.be/events/events.rss
 
 Examples
 --------
@@ -50,7 +47,7 @@ The following example will retrieve feeds every 5 seconds:
 
 ::
 
-  $ feedstail -u http://identi.ca/api/statuses/public_timeline.atom -i 5
+  $ feedstail -u http://hackeragenda.be/events/events.rss -i 5
 
 
 The default output format may not be ok for you. You can specify your
@@ -60,7 +57,7 @@ The following example will output the published date, the title and the link:
 
 ::
 
-  $ feedstail -u http://identi.ca/api/statuses/public_timeline.atom -f "{published}: {title} - {link}"
+  $ feedstail -u http://hackeragenda.be/events/events.rss -f "{published}: {title} - {link}"
 
 This last example use the string formatting syntax appeared in the 2.6
 version of Python.
@@ -69,7 +66,7 @@ string formatting syntax:
 
 ::
 
-  $ feedstail -u http://identi.ca/api/statuses/public_timeline.atom -f "%(published)s: %(title)s - %(link)s"
+  $ feedstail -u http://hackeragenda.be/events/events.rss -f "%(published)s: %(title)s - %(link)s"
 
 
 Feedstail compares the ``id`` element to find new entries. You can
@@ -79,7 +76,7 @@ entries:
 
 ::
 
-  $ feedstail -u http://identi.ca/api/statuses/public_timeline.atom -i 2 -k title
+  $ feedstail -u http://hackeragenda.be/events/events.rss -i 2 -k title
 
 
 
@@ -121,7 +118,7 @@ Example:
    from feedstail import feedGenerator
    from feedstail.config import Config
 
-   feed = feedGenerator(Config(url="http://identi.ca/api/statuses/public_timeline.atom", format=u'{title} - {link}'))
+   feed = feedGenerator(Config(url="http://hackeragenda.be/events/events.rss", format=u'{title} - {link}'))
    print '\n'.join(feed.next())
 
 Contribute !
