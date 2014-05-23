@@ -11,7 +11,7 @@ setup( name             = "feedstail"
      , author           = "Romain Gauthier"
      , author_email     = "romain.gauthier@masteri2l.org"
 
-     , version          = '0.5'
+     , version          = '0.5.1'
      , scripts          = ['bin/feedstail']
      , packages         = ['feedstail']
      , data_files       = [('', ['README.rst', 'LICENSE.txt'])]
