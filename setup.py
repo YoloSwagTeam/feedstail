@@ -11,7 +11,7 @@ setup( name             = "feedstail"
      , author           = "Romain Gauthier"
      , author_email     = "romain.gauthier@masteri2l.org"
 
-     , version          = '0.4.1'
+     , version          = '0.5'
      , scripts          = ['bin/feedstail']
      , packages         = ['feedstail']
      , data_files       = [('', ['README.rst', 'LICENSE.txt'])]
@@ -21,7 +21,7 @@ setup( name             = "feedstail"
          [ "Development Status :: 3 - Alpha"
          , "License :: OSI Approved :: GNU General Public License (GPL)"
          , "Operating System :: OS Independent"
-         , "Programming Language :: Python :: 2.5"
+         , "Programming Language :: Python :: 2.7"
          , "Topic :: Utilities"
          ]
       )
