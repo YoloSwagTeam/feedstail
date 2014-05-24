@@ -124,16 +124,15 @@ Example:
 Contribute !
 ------------
 
-  - Fork the project: `https://github.com/Psycojoker/feedstail.git`_
-  - Create your patch in a topic branch
-  - Send pull requests or send your patches via e-mail
+- Fork the project: `https://github.com/Psycojoker/feedstail.git`_
+- Create your patch in a topic branch
+- Send pull requests or send your patches via e-mail
 
 Don't forget to mark your commits by one of the following flag:
 
-  - [enh]: Your commit add a notable enhancement, a new feature for instance
-  - [fix]: Your commit is a bugfix
-  - [doc]: Your commit improve the documentation
-  - [mod]: Your commit bring general changes, matching neither of the above, like refactoring
+- [enh]: Your commit add a notable enhancement, a new feature for instance
+- [fix]: Your commit is a bugfix
+- [doc]: Your commit improve the documentation
+- [mod]: Your commit bring general changes, matching neither of the above, like refactoring
 
 .. _`https://github.com/Psycojoker/feedstail.git` : https://github.com/Psycojoker/feedstail.git
-
